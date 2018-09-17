@@ -47,13 +47,22 @@ let getSalario = (empleado) => {
     });
 }
 
+// getEmpleado(3).then(empleado => {
+//     console.log('Empleado de BD ', empleado);
+//     getSalario(empleado).then(resp => {
+//         console.log(`El salario de ${resp.nombre} es de $ ${resp.salario}`);
+//     }, (err) => {
+//         console.log('Error: ', err);
+//     });
+// }, (err) => {
+//     console.log('Error: ', err);
+// });
+
+//Esta es la sintaxis para escribir promesas encadenadas.
 getEmpleado(3).then(empleado => {
-    console.log('Empleado de BD ', empleado);
-    getSalario(empleado).then(resp => {
-        console.log(`El salario de ${resp.nombre} es de $ ${resp.salario}`);
-    }, (err) => {
-        console.log('Error: ', err);
-    });
-}, (err) => {
-    console.log('Error: ', err);
+    return getSalario(empleado);
+}).then(resp => {
+    console.log(`El salario de ${resp.nombre} es de $ ${resp.salario}`);
+}).catch(err => {
+    console.log(err);
 });
