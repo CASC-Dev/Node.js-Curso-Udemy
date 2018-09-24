@@ -1,13 +1,32 @@
-const fs = require('fs');
+const argv = require('./config/yargs').argv;
+const colors = require('colors');
 
-let base = 5;
-let data = '';
+const {crearArchivo, listarTabla} = require('./tablas/multiplicar');
 
-for(let i=1; i<=10; i++){
-    data += `${base} x ${i} = ${base*i}\n`;
+let comando = argv._[0];
+
+switch (comando) {
+    case 'listar':
+        listarTabla(argv.base, argv.limite)
+            .then(tabla => console.log(`Resultado:\n${tabla}`))
+            .catch(e => console.log(e));
+        break;
+    case 'crear':
+        crearArchivo(argv.base, argv.limite)
+            .then(archivo => console.log(`Archivo creado: ${archivo}`))
+            .catch(e => console.log(e));
+        break;
+
+    default:
+        console.log('Comando no reconocido');
+        break;
 }
 
-fs.writeFile(`tablas/tabla-${base}.txt`, data, (err) => {
-    if (err) throw err;
-    console.log(`¡El archivo tabla-${base}.txt ha sido creado!`);
-});
+// console.log('Límite: ', argv.limite);
+
+//let base = 5;
+//console.log(process.argv);
+// let argv2 = process.argv;
+// let parametro = argv[2];
+// let base = parametro.split('=')[1];
+
