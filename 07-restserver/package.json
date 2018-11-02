@@ -1,21 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "07-restserver",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node server/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.18.3",
-        "express": "^4.16.3"
-    }
-}
-=======
   "name": "07-restserver",
   "version": "1.0.0",
   "description": "",
@@ -38,4 +21,3 @@
     "underscore": "^1.9.1"
   }
 }
->>>>>>> 4f44f10b40e3cb0605f9a99b48c1ad4a4404fb34
